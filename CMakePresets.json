@@ -1,0 +1,54 @@
+{
+  "version": 9,
+  "cmakeMinimumRequired": {"major": 3, "minor": 28, "patch": 0},
+  "configurePresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -Wpedantic",
+        "BUILD_TESTS": "ON",
+        "DRONE_TELEMETRY_USE_MAVSDK": "OFF"
+      }
+    },
+    {
+      "name": "debug-mavsdk",
+      "displayName": "Debug + MAVSDK",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug-mavsdk",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -Wpedantic",
+        "BUILD_TESTS": "ON",
+        "DRONE_TELEMETRY_USE_MAVSDK": "ON"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "ON",
+        "BUILD_TESTS": "OFF",
+        "DRONE_TELEMETRY_USE_MAVSDK": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {"name": "debug", "configurePreset": "debug"},
+    {"name": "debug-mavsdk", "configurePreset": "debug-mavsdk"},
+    {"name": "release", "configurePreset": "release"}
+  ],
+  "testPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "output": {"verbosity": "verbose"}
+    }
+  ]
+}

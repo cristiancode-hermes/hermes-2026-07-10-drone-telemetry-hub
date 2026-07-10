@@ -1,0 +1,13 @@
+{
+  "name": "drone-telemetry-hub",
+  "version": "1.0.0",
+  "description": "MAVSDK-based drone telemetry logger with REST API",
+  "homepage": "https://github.com/cristiancode-hermes/hermes-drone-telemetry-hub",
+  "dependencies": [
+    {"name": "cpp-httplib", "version>=0.18.2"},
+    {"name": "nlohmann-json", "version>=3.11.3"},
+    {"name": "spdlog", "version>=1.15.1"},
+    {"name": "sqlite3", "version>=3.40.0"}
+  ],
+  "builtin-baseline": "1a795bb18ec69120d8b518c2b0a28210cdc0640c"
+}
